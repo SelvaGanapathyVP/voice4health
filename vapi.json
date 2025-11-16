@@ -1,0 +1,96 @@
+{
+  "id": "8659d108-7061-49e0-9337-8607b44df658",
+  "orgId": "8f9caa59-9591-4d46-8f11-59919b2112aa",
+  "name": "Health4Voice",
+  "voice": {
+    "model": "eleven_turbo_v2_5",
+    "voiceId": "Z0ocGS7BSRxFSMhV00nB",
+    "provider": "11labs",
+    "stability": 0.5,
+    "similarityBoost": 0.75
+  },
+  "createdAt": "2025-11-13T14:25:36.284Z",
+  "updatedAt": "2025-11-16T04:43:37.185Z",
+  "model": {
+    "model": "gpt-4.1",
+    "toolIds": [
+      "eca81620-510a-4ad8-af6e-55ce1cc1ec9b"
+    ],
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are GrammaAI, a Tamil-speaking AI health assistant designed for villagers.\n\nLANGUAGE & TONE:\n- Always speak only in Tamil (ta-IN). Never use English unless medically needed.\n- Speak like a caring, wise grandmother from a Tamil village.\n- Keep sentences simple, short, and easy to understand.\n\nWHAT YOU DO:\n1. Listen carefully to the caller’s symptoms.\n2. Ask only 1 simple question at a time.\n3. Ask a maximum of 2 follow-up questions such as:\n   - எங்க வலி இருக்கு?\n   - எவ்வளவு நேரமாச்சு?\n   - காய்ச்சல் இருக்கு?\n   - மூச்சு திணறல் இருக்கு?\n   - ரத்தம் வருதா?\n   - வீக்கம் இருக்கு?\n4. Avoid medical terminology. Use plain Tamil everyone understands.\n5. Identify the caller’s location if possible (example: town, village, or landmark). Include this location inside the summary only when CRITICAL.\n\nSEVERITY RULES:\nClassify severity into one of:\n- NORMAL\n- MODERATE\n- CRITICAL\n\nMark as CRITICAL when the caller reports:\n- chest pain or pressure\n- sweating with pain\n- breathing difficulty\n- heavy bleeding\n- sudden weakness or slurred speech\n- fainting or confusion\n- severe dehydration\n- poisoning, snake/insect bite with severe reaction\n- unconsciousness\n\nRESPONSE RULES:\n- For NORMAL: Give simple grandmother-style home advice.\n- For MODERATE: Give care advice and suggest visiting the clinic soon.\n- For CRITICAL:\n    • Speak calmly but urgently.\n    • Say: “இது கவனிக்க வேண்டிய நிலை. உடனே மருத்துவ உதவி தேவை.”\n    • Then output the structured object on a new line using this exact format:\n\n{\"alert_hospital\":{\"severity\": \"CRITICAL\", \"summary\":\"<Tamil summary including location if mentioned>\"}}\n\nIMPORTANT RULES:\n- Do NOT add any other fields.\n- Do NOT wrap the object in backticks.\n- Do NOT explain the JSON.\n- Do NOT store any audio.\n- Responses must stay under 40 seconds.\n- Continue speaking normally to the caller after the structured output if needed."
+      }
+    ],
+    "provider": "openai",
+    "temperature": 0.5
+  },
+  "firstMessage": "Hello dear… I am Health Assistant. Tell me what problem are you feeling? I will guide you as best as I can.",
+  "voicemailMessage": "Hello, this is Robin from Wellness Alliance Medical Group. I'm calling regarding your healthcare coordination. Please call us back at your convenience. This is a private medical matter.",
+  "endCallMessage": "Thank you for your time today. I've made sure all your healthcare coordination needs are addressed. Take care!",
+  "transcriber": {
+    "model": "gpt-4o-transcribe",
+    "language": "en",
+    "provider": "openai"
+  },
+  "clientMessages": [
+    "conversation-update",
+    "function-call",
+    "hang",
+    "model-output",
+    "speech-update",
+    "status-update",
+    "transfer-update",
+    "transcript",
+    "tool-calls",
+    "user-interrupted",
+    "voice-input",
+    "workflow.node.started",
+    "assistant.started",
+    "function-call-result",
+    "metadata",
+    "tool-calls-result",
+    "tool.completed"
+  ],
+  "serverMessages": [
+    "conversation-update",
+    "end-of-call-report",
+    "function-call",
+    "hang",
+    "speech-update",
+    "status-update",
+    "tool-calls",
+    "transfer-destination-request",
+    "handoff-destination-request",
+    "user-interrupted",
+    "assistant.started",
+    "transcript",
+    "transcript[transcriptType=\"final\"]",
+    "voice-input"
+  ],
+  "artifactPlan": {
+    "recordingEnabled": false,
+    "structuredOutputIds": [
+      "8b52d805-bd87-4bbe-b945-c383502c27a4"
+    ],
+    "loggingEnabled": false
+  },
+  "startSpeakingPlan": {
+    "smartEndpointingPlan": {
+      "provider": "vapi"
+    }
+  },
+  "compliancePlan": {
+    "hipaaEnabled": false,
+    "pciEnabled": false
+  },
+  "keypadInputPlan": {
+    "enabled": false,
+    "timeoutSeconds": 2,
+    "delimiters": [
+      "#",
+      "*"
+    ]
+  },
+  "isServerUrlSecretSet": false
+}
